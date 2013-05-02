@@ -121,6 +121,13 @@
       $(document).trigger('beforeReveal.facebox')
       if (klass) $('#facebox .content').addClass(klass)
       $('#facebox .content').empty().append(data)
+      
+      // check if there is a textarea, if yes, apply make it a wysiwyg editor
+      // using jwysiwyg library https://github.com/jwysiwyg/jwysiwyg
+      if ($('#facebox .content #mytextarea').length) {
+		  $('#facebox .content #mytextarea').wysiwyg();
+	  };
+      
       $('#facebox .popup').children().fadeIn('normal')
       $('#facebox').css('left', $(window).width() / 2 - ($('#facebox .popup').outerWidth() / 2))
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
